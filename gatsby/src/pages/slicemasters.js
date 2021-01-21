@@ -1,9 +1,10 @@
 import React from "react";
+import Layout from "../components/Layout";
 
 export default function SlicemastersPage() {
   return (
-    <div>
+    <>
       <p>SlicemastersPage</p>
-    </div>
+    </>
   );
 }
