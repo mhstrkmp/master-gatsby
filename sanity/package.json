@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "start": "sanity start",
     "reconfigure": "sanity init --reconfigure",
-    "deploy": "sanity graphql deploy production"
+    "deploy": "sanity graphql deploy production",
+    "import": "sanity dataset import ./sample-data/all-sample-data.gz production --replace"
   },
   "keywords": [
     "sanity"
