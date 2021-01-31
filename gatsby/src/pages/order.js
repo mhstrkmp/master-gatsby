@@ -45,7 +45,7 @@ export default function OrderPage({ data }) {
         <fieldset className="menu">
           <legend>Menu</legend>
           {pizzas.map((pizza) => (
-            <MenuItemStyles key={pizza.id}>
+            <MenuItemStyles key={`${pizza.id}-${pizza.index}`}>
               <Img
                 width="50"
                 height="50"
@@ -59,6 +59,7 @@ export default function OrderPage({ data }) {
                 {["S", "M", "L"].map((size) => (
                   <button
                     type="button"
+                    key={size}
                     onClick={() =>
                       addToOrder({
                         id: pizza.id,

@@ -1,7 +1,8 @@
-import { useState } from "react";
-export default function usePizza({ pizzas, inputs }) {
-  const [order, setOrder] = useState([]);
+import { useContext } from "react";
+import OrderContext from "../components/OrderContext";
 
+export default function usePizza({ pizzas, inputs }) {
+  const [order, setOrder] = useContext(OrderContext);
   function addToOrder(orderedPizza) {
     setOrder([...order, orderedPizza]);
   }
