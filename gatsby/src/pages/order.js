@@ -17,14 +17,26 @@ export default function OrderPage({ data }) {
     name: "",
     email: "",
   });
-  const { order, addToOrder, removeFromOrder } = usePizza({
+  const {
+    order,
+    error,
+    loading,
+    message,
+    addToOrder,
+    removeFromOrder,
+    submitOrder,
+  } = usePizza({
     pizzas,
-    inputs: values,
+    values,
   });
+
+  if (message) {
+    return <p>{message}</p>;
+  }
   return (
     <>
       <SEO title="Order a Pizza!" />
-      <OrderStyles>
+      <OrderStyles onSubmit={submitOrder}>
         <fieldset>
           <legend>Your Info</legend>
           <label htmlFor="name">Name</label>
@@ -86,7 +98,14 @@ export default function OrderPage({ data }) {
           <h3>
             Your Total is {formatMoney(calculateOrderTotal(order, pizzas))}
           </h3>
-          <button type="submit">Order Ahead</button>
+          {error && (
+            <div>
+              <p>Error :${error}</p>
+            </div>
+          )}
+          <button type="submit" disabled={loading}>
+            {loading ? "Placing Order ..." : "Order Ahead"}
+          </button>
         </fieldset>
       </OrderStyles>
     </>
