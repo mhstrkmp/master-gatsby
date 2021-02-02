@@ -49,9 +49,18 @@ exports.handler = async (event, context) => {
     }
   }
 
+  if (!body.order.length) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: `Why would you order nothing?!`,
+      }),
+    };
+  }
+
   const info = await transporter.sendMail({
     from: "Slick's Slices <slick@example.com>",
-    to: `${body.name} <${body.email}>, orders@example.com`,
+    to: `${body.name} < ${body.email} >, orders@example.com`,
     subject: "New order!",
     html: generateOrderEmail({ order: body.order, total: body.total }),
   });
