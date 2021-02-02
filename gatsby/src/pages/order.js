@@ -57,7 +57,7 @@ export default function OrderPage({ data }) {
         <fieldset className="menu">
           <legend>Menu</legend>
           {pizzas.map((pizza) => (
-            <MenuItemStyles key={`${pizza.id}-${pizza.index}`}>
+            <MenuItemStyles key={`${pizza.id}_${pizza.index}`}>
               <Img
                 width="50"
                 height="50"
